@@ -2,7 +2,6 @@
 namespace Coda\Slim\Registrant;
 
 use Interop\Container\ContainerInterface;
-use \object as object;
 
 class Registrator  implements RegistratorInterface
 {

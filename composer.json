@@ -1,0 +1,26 @@
+{
+    "name": "coda/slim-route-registrant",
+    "description": "Slim Framework route registrator",
+    "keywords": [
+        "slim",
+        "framework",
+        "route"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Iwan Hartanto",
+        "email": "elop.development@gmail.com"
+      }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "slim/slim": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Coda\\Slim\\Registrant\\": "src/"
+        }
+    }
+}

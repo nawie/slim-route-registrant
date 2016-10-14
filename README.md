@@ -58,7 +58,7 @@ $app->group('/api', function (){
 ##### register
 
 Register instance of class into container based on class name
-```
+``` php
 // register
 $container['Registrator']->register('\My\ApiClass', ...$restArguments)->run();
 
@@ -69,7 +69,7 @@ $this->get('[/{id}]', '\My\ApiClass:method');
 ##### registerClass
 Register instance of class into container based on class object
 
-```
+``` php
 // register
 $apiClass = new \My\ApiClass($args1, $args2);
 $container['Registrator']->registerClass($apiClass)->run();
@@ -81,7 +81,7 @@ $this->get('[/{id}]', '\My\ApiClass:method');
 ##### setAlias
 Set an alias on container for your class instance. so you can called only alias in route
 
-```
+``` php
 // register
 $container['Registrator']->setAlias('MyAlias')->register('\My\TrueClass', $container)->run();
 

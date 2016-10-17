@@ -1,7 +1,8 @@
 # Slim framework dynamic route register container
+
 ## Using especially on group route in slim framework
 
-## Usage
+### Usage
 
 ``` php
 
@@ -22,6 +23,13 @@ class UserController{
         $this->container = $container;
     }
 
+    public function status(Request $request, Response $response, $args)
+    {
+        return $response
+               ->withHeader('Content-Type', 'application/json')
+               ->write('online');
+    }
+
     public function hello(Request $request, Response $response, $args)
     {
         $name = empty($args) ? " World" : $args['name'];
@@ -32,6 +40,7 @@ class UserController{
 
 }
 
+
 // register container
 
 $container = $app->getContainer();
@@ -40,7 +49,7 @@ $container['Registrator'] = function($c) {
 };
 
 
-// usage on slim route
+// usage on slim route group
 
 $app->group('/api', function (){
     $container = $this->getContainer();
@@ -50,6 +59,15 @@ $app->group('/api', function (){
 
         $this->get('[/{name}]', 'UserControllers:hello')->setName('hello-user');
     });
+});
+
+
+// usage on single slim route
+
+$container = $this->getContainer();
+$app->get('/status', function () use($container){
+    $this->Registrator->setAlias('UserStatusControllers')->register('\My\App\Route\Api\UserController', $this)->run();
+    return $this->UserStatusControllers->status();
 });
 
 ```

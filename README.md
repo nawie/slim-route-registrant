@@ -51,7 +51,7 @@ $container['Registrator'] = function($c) {
 
 // usage on slim route group
 
-$app->group('/api', function (){
+$app->group('/api', function(){
     $container = $this->getContainer();
 
     $this->group('/user', function() use($container){
@@ -64,8 +64,7 @@ $app->group('/api', function (){
 
 // usage on single slim route
 
-$container = $this->getContainer();
-$app->get('/status', function () use($container){
+$app->get('/status', function(){
     $this->Registrator->setAlias('UserStatusControllers')->register('\My\App\Route\Api\UserController', $this)->run();
     return $this->UserStatusControllers->status();
 });
